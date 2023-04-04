@@ -1,4 +1,4 @@
-/* * Data converted from C:/Users/aaron/Documents/ESP32-IDF-Projects/softAP2/main/webpage/index.html
+/* * Data converted from D:/ETI-Wireless-Module/main/webpage/index.html
  */
 .data
 .section .rodata.embedded

@@ -5,18 +5,18 @@ cmake_minimum_required(VERSION 3.5)
 
 file(MAKE_DIRECTORY
   "C:/Users/aaron/esp/esp-idf/components/bootloader/subproject"
-  "C:/Users/aaron/Documents/ESP32-IDF-Projects/softAP2/build/bootloader"
-  "C:/Users/aaron/Documents/ESP32-IDF-Projects/softAP2/build/bootloader-prefix"
-  "C:/Users/aaron/Documents/ESP32-IDF-Projects/softAP2/build/bootloader-prefix/tmp"
-  "C:/Users/aaron/Documents/ESP32-IDF-Projects/softAP2/build/bootloader-prefix/src/bootloader-stamp"
-  "C:/Users/aaron/Documents/ESP32-IDF-Projects/softAP2/build/bootloader-prefix/src"
-  "C:/Users/aaron/Documents/ESP32-IDF-Projects/softAP2/build/bootloader-prefix/src/bootloader-stamp"
+  "D:/ETI-Wireless-Module/build/bootloader"
+  "D:/ETI-Wireless-Module/build/bootloader-prefix"
+  "D:/ETI-Wireless-Module/build/bootloader-prefix/tmp"
+  "D:/ETI-Wireless-Module/build/bootloader-prefix/src/bootloader-stamp"
+  "D:/ETI-Wireless-Module/build/bootloader-prefix/src"
+  "D:/ETI-Wireless-Module/build/bootloader-prefix/src/bootloader-stamp"
 )
 
 set(configSubDirs )
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "C:/Users/aaron/Documents/ESP32-IDF-Projects/softAP2/build/bootloader-prefix/src/bootloader-stamp/${subDir}")
+    file(MAKE_DIRECTORY "D:/ETI-Wireless-Module/build/bootloader-prefix/src/bootloader-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "C:/Users/aaron/Documents/ESP32-IDF-Projects/softAP2/build/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "D:/ETI-Wireless-Module/build/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
 endif()

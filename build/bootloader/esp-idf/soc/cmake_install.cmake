@@ -39,6 +39,6 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/aaron/Documents/ESP32-IDF-Projects/softAP2/build/bootloader/esp-idf/soc/esp32/cmake_install.cmake")
+  include("D:/ETI-Wireless-Module/build/bootloader/esp-idf/soc/esp32/cmake_install.cmake")
 endif()
 

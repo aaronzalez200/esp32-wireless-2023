@@ -1,8 +1,8 @@
-# Install script for directory: C:/Users/aaron/Documents/ESP32-IDF-Projects/softAP2/main
+# Install script for directory: D:/ETI-Wireless-Module/main
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/wifi_softAP")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/ETI-Wireless-Module")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
