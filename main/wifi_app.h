@@ -12,7 +12,7 @@
 #include "esp_wifi.h"
 
 // WiFi application settings
-#define WIFI_AP_SSID				"ESP32_AP"			// AP name
+#define WIFI_AP_SSID				"NetworkETICloud"			// AP name
 #define WIFI_AP_PASSWORD			"password"			// AP password
 #define WIFI_AP_CHANNEL				1					// AP channel
 #define WIFI_AP_SSID_HIDDEN			0					// AP visibility

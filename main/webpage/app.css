@@ -1,9 +1,9 @@
 
 
 body {
-    background-color: white;
+    background-color: rgb(40,40,40);
     font-family: HelveticaNeueRegular, HelveticaNeue-Regular, "Helvetica Neue Regular", HelveticaNeue, "Helvetica Neue", Helvetica, Arial;
-    color: #0272B7;
+    color: #ffffff;
 }
 
 h1 {
@@ -12,22 +12,22 @@ h1 {
     margin: 0;
     padding: 10px;
     font-size: 1.7em;
-    color: #1d3557;
+    color: #e02b20;
 }
 
 h2 {
 	font-size: 1.4em;
-    color: #1d3557;
+    color: #e02b20;
 }
 
 h3 {
 	font-size: 1.2em;
-    color: #1d3557;
+    color: #e02b20;
 }
 
 h4 {
 	font-size: 1em;
-    color: #1d3557;
+    color: #e02b20;
 }
 
 .gr {
@@ -39,51 +39,63 @@ h4 {
 
 #latest_firmware, #latest_firmware_label {
 	display:inline;
+    color:#e02b20
 }
 #latest_firmware {
-	color: #1d3557;
+	color: #ffffff;
 }
 
 #temperature_reading {
 	display:inline;
-	color: #1d3557;
+	color: #e02b20;
 }
 
 #humidity_reading {
 	display:inline;
-	color: #1d3557;
+	color: #e02b20;
 }
 
 #connected_ap_label, #connected_ap {
     display: inline;
+    color: 'white';
 }
 
-#ip_address_label, #netmask _label, #gateway_label, #mac_label {
+#ip_address_label, #netmask _label, #gateway_label, #serial_label {
     display: flex;
+    color: 'white';
 }
 
-#wifi_connect_ip, #wifi_connect_mask, #wifi_connect_gw, #wifi_connet_mac {
+#wifi_connect_ip, #wifi_connect_mask, #wifi_connect_gw, #wifi_connect_serial {
     display: flex;
 }
 
 #connected_ap {
-    color: #1d3557
+    color: #ffffff;
 }
 
 #wifi_connect_ip {
-    color: #1d3557
+    color: #ffffff;
 }
 
 #wifi_connect_netmask {
-    color: #1d3557
+    color: #ffffff;
 }
 
 #wifi_connect_gw {
-    color: #1d3557
+    color: #ffffff;
+}
+
+#wifi_connect_serial {
+    color: #ffffff;
 }
 
 #disconnect_wifi {
-    color: white;
+    color: #ffffff;
+    display: none;
+}
+
+#wifi_info_rows {
+    color: #e02b20;
     display: none;
 }
 
@@ -116,6 +128,10 @@ input[type="button"]:hover {
 input[type="button"]:active {
     box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
                 inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
+
+input[type="checkbox"] {
+    color: 'white';
 }
 
 

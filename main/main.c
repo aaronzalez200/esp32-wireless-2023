@@ -34,7 +34,7 @@ gpio_num_t EMC_ON = GPIO_NUM_32;
 gpio_num_t EMC_OFF = GPIO_NUM_33;
 
 // Declare the url string and a buffer to hold the concatenated string
-char url[100] = "https://heartfelt-pony-29b78c.netlify.app/api/devices?serial=";
+char url[100] = "https://networketicloud.com/api/devices?serial=";
 char serial_str[20];
 
 TaskHandle_t myTaskHandle = NULL;
@@ -67,13 +67,15 @@ esp_err_t client_event_get_handler(esp_http_client_event_handle_t evt)
     {
         case HTTP_EVENT_ON_DATA:
         {
+            printf("\n-----HTTP EVENT OCCURED-----\n");
+            fwrite(evt->data, evt->data_len, 1, stdout);
             // Parse the received JSON data using cJSON
             cJSON *root = cJSON_Parse((char *)evt->data);
             if (root == NULL) {
-                printf("Error parsing JSON: %s\n", cJSON_GetErrorPtr());
+                printf("\nError parsing JSON: %s\n", cJSON_GetErrorPtr());
                 break;
             }
-            
+            printf("Moving on to devices array verification.....");
             // Extract the array of devices from the root object
             cJSON *devices_array = cJSON_GetObjectItemCaseSensitive(root, "devices");
             if (!cJSON_IsArray(devices_array)) {
@@ -147,9 +149,6 @@ esp_err_t client_event_get_handler(esp_http_client_event_handle_t evt)
             }
             emc_toggle_value = emc_toggle_value_obj->valueint;
             
-            // Cleanup cJSON memory
-            cJSON_Delete(root);
-            
             printf("Supply value: %d\n", supply_value);
             printf("Heat value: %d\n", heat_value);
             printf("EMC value: %d\n", emc_value);
@@ -157,11 +156,11 @@ esp_err_t client_event_get_handler(esp_http_client_event_handle_t evt)
             printf("Snow value: %d\n", snow_value);
             printf("GFEP value: %d\n", gfep_value);
             printf("Temp Limit value: %d\n", temp_limit_value);
-            printf("-----Break-----\n");
-            
+            printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+            // Cleanup cJSON memory
+            cJSON_Delete(root);    
             break;
         }
-        
         default:
             break;
     }
@@ -173,12 +172,15 @@ esp_err_t client_event_put_handler(esp_http_client_event_t *evt)
     switch (evt->event_id) {
         case HTTP_EVENT_ON_DATA:
             // Process received data in evt->data
+            printf("Processing data\n");
             break;
         case HTTP_EVENT_ON_FINISH:
             // Request completed
+            printf("Request completed\n");
             break;
         case HTTP_EVENT_ERROR:
             // Request error occurred
+            printf("Processing/Request error\n");
             break;
         default:
             break;
@@ -195,21 +197,24 @@ static void get_database_info()
 			.url = url,
 			.method = HTTP_METHOD_GET,
 			.event_handler = client_event_get_handler,
-			.auth_type = HTTP_AUTH_TYPE_NONE,
-			.transport_type = HTTP_TRANSPORT_OVER_TCP
+			.auth_type = HTTP_AUTH_TYPE_BASIC,
+			.transport_type = HTTP_TRANSPORT_OVER_TCP,
+            .buffer_size = 1024
 		};
 
         esp_http_client_config_t config_put = {
             .url = url,
             .method = HTTP_METHOD_PUT,
             .event_handler = client_event_put_handler,
-            .auth_type = HTTP_AUTH_TYPE_NONE,
+            .auth_type = HTTP_AUTH_TYPE_BASIC,
             .transport_type = HTTP_TRANSPORT_OVER_TCP
         };
-
 		esp_http_client_handle_t client = esp_http_client_init(&config_get);
+        esp_http_client_set_header(client, "api_key", "vPgTEzvLl9lVZGOshej9ujmd7dr7qghGAftUAWeuuM8vsPBUya2Bw37996Djlbi4");
+        vTaskDelay(100 / portTICK_PERIOD_MS);
         esp_http_client_handle_t client2 = esp_http_client_init(&config_put);
 		esp_http_client_perform(client);
+        vTaskDelay(100 / portTICK_PERIOD_MS);
 		esp_http_client_cleanup(client);
         if (gpio_get_level(Heat) == 1) {
             printf("Heat is low\n");
@@ -225,13 +230,15 @@ static void get_database_info()
             printf("Supply is high\n");
             supply_value = 0;
         }
-        if (gpio_get_level(EMC) == 1) {
+        if (emc_value == 1) {
             printf("EMC is low\n");
+            gpio_set_level(EMC, 0);
             // Turn off override
-            gpio_set_level(GPIO_NUM_32, 1); //EMC ON so set override ON HIGH
-            gpio_set_level(GPIO_NUM_33, 1); //EMC ON so set override OFF HIGH
+            gpio_set_level(EMC_ON, 1); //EMC ON so set override ON HIGH
+            gpio_set_level(EMC_OFF, 1); //EMC ON so set override OFF HIGH
         } else {
             printf("EMC is high\n");
+            gpio_set_level(EMC, 1);
             // If Override ON is selected & EMC is enabled
             if (emc_toggle_value == 1) {
                 printf("EMC enabled, EMC Override ON\n");

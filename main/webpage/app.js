@@ -262,10 +262,11 @@ function getConnectInfo()
 		$("#gateway_label").html("Gateway: ");
 		$("#wifi_connect_gw").text(data["gw"]);
 
-		$("#mac_label").html("Serial #: ");
-		$("#wifi_connect_mac").text(data["serial_num"]);
+		$("#serial_label").html("Serial #: ");
+		$("#wifi_connect_serial").text(data["serial_num"]);
 
 		document.getElementById('disconnect_wifi').style.display = 'block';
+		document.getElementById('wifi_info_rows').style.display = 'block';
 	})
 }
 
