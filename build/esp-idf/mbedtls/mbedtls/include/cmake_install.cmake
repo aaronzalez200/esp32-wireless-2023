@@ -2,7 +2,7 @@
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/wifi_softAP")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/ETI-Wireless-Module")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -69,6 +69,8 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     "C:/Users/aaron/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/gcm.h"
     "C:/Users/aaron/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/hkdf.h"
     "C:/Users/aaron/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/hmac_drbg.h"
+    "C:/Users/aaron/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/legacy_or_psa.h"
+    "C:/Users/aaron/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/lms.h"
     "C:/Users/aaron/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/mbedtls_config.h"
     "C:/Users/aaron/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/md.h"
     "C:/Users/aaron/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/md5.h"
@@ -80,6 +82,7 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     "C:/Users/aaron/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/pk.h"
     "C:/Users/aaron/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/pkcs12.h"
     "C:/Users/aaron/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/pkcs5.h"
+    "C:/Users/aaron/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/pkcs7.h"
     "C:/Users/aaron/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/platform.h"
     "C:/Users/aaron/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/platform_time.h"
     "C:/Users/aaron/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/platform_util.h"

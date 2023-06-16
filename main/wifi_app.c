@@ -1,10 +1,3 @@
-/*
- * wifi_app.c
- *
- *  Created on: Oct 17, 2021
- *      Author: kjagu
- */
-
 #include "freertos/FreeRTOS.h"
 #include "freertos/event_groups.h"
 #include "freertos/task.h"
@@ -44,6 +37,9 @@ static QueueHandle_t wifi_app_queue_handle;
 esp_netif_t* esp_netif_sta = NULL;
 esp_netif_t* esp_netif_ap  = NULL;
 
+// variable that holds the status of WiFi being connected or not
+extern bool wifi_connected = false;
+
 /**
  * WiFi application event handler
  * @param arg data, aside from event data, that is passed to the handler when it is called
@@ -79,6 +75,7 @@ static void wifi_app_event_handler(void *arg, esp_event_base_t event_base, int32
 
 			case WIFI_EVENT_STA_CONNECTED:
 				ESP_LOGI(TAG, "WIFI_EVENT_STA_CONNECTED");
+				wifi_connected = true;
 				break;
 
 			case WIFI_EVENT_STA_DISCONNECTED:
@@ -92,12 +89,12 @@ static void wifi_app_event_handler(void *arg, esp_event_base_t event_base, int32
 				{
 					esp_wifi_connect();
 					g_retry_number ++;
+					printf("Trying to connect...\n");
 				}
 				else
 				{
 					wifi_app_send_message(WIFI_APP_MSG_STA_DISCONNECTED);
 				}
-
 				break;
 		}
 	}
@@ -269,6 +266,7 @@ static void wifi_app_task(void *pvParameters)
 					ESP_LOGI(TAG, "WIFI_APP_MSG_STA_CONNECTED_GOT_IP");
 
 					http_server_monitor_send_message(HTTP_MSG_WIFI_CONNECT_SUCCESS);
+					printf("We're connected to the internet!\n");
 
 					eventBits = xEventGroupGetBits(wifi_app_event_group);
 					if (eventBits & WIFI_APP_CONNECTING_USING_SAVED_CREDS_BIT) // Save STA creds only if connecting from the http server (not loaded from NVS)
@@ -295,6 +293,7 @@ static void wifi_app_task(void *pvParameters)
 					g_retry_number = MAX_CONNECTION_RETRIES;
 					ESP_ERROR_CHECK(esp_wifi_disconnect());
 					app_nvs_clear_sta_creds();
+					break;
 
 				case WIFI_APP_MSG_STA_DISCONNECTED:
 					ESP_LOGI(TAG, "WIFI_APP_MSG_STA_DISCONNECTED");

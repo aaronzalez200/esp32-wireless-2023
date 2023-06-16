@@ -2,7 +2,7 @@
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/wifi_softAP")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/ETI-Wireless-Module")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -39,9 +39,9 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("C:/Users/aaron/Documents/ESP32-IDF-Projects/softAP2/build/esp-idf/mbedtls/mbedtls/include/cmake_install.cmake")
-  include("C:/Users/aaron/Documents/ESP32-IDF-Projects/softAP2/build/esp-idf/mbedtls/mbedtls/3rdparty/cmake_install.cmake")
-  include("C:/Users/aaron/Documents/ESP32-IDF-Projects/softAP2/build/esp-idf/mbedtls/mbedtls/library/cmake_install.cmake")
+  include("C:/Users/aaron/esp32-dev/esp32-eti/ETI-Wireless-Module/build/esp-idf/mbedtls/mbedtls/include/cmake_install.cmake")
+  include("C:/Users/aaron/esp32-dev/esp32-eti/ETI-Wireless-Module/build/esp-idf/mbedtls/mbedtls/3rdparty/cmake_install.cmake")
+  include("C:/Users/aaron/esp32-dev/esp32-eti/ETI-Wireless-Module/build/esp-idf/mbedtls/mbedtls/library/cmake_install.cmake")
 
 endif()
 

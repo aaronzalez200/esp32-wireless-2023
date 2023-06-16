@@ -1,4 +1,4 @@
-/* * Data converted from C:/Users/aaron/Documents/ESP32-IDF-Projects/softAP2/build/esp-idf/mbedtls/x509_crt_bundle
+/* * Data converted from C:/Users/aaron/esp32-dev/esp32-eti/ETI-Wireless-Module/build/esp-idf/mbedtls/x509_crt_bundle
  */
 .data
 .section .rodata.embedded
