@@ -363,6 +363,7 @@ C:/Users/aaron/esp32-dev/esp32-eti/ETI-Wireless-Module/build/esp-idf/esp_wifi/CM
 C:/Users/aaron/esp32-dev/esp32-eti/ETI-Wireless-Module/build/esp-idf/esp_wifi/CMakeFiles/install.dir
 C:/Users/aaron/esp32-dev/esp32-eti/ETI-Wireless-Module/build/esp-idf/esp_wifi/CMakeFiles/install/local.dir
 C:/Users/aaron/esp32-dev/esp32-eti/ETI-Wireless-Module/build/esp-idf/esp_wifi/CMakeFiles/install/strip.dir
+C:/Users/aaron/esp32-dev/esp32-eti/ETI-Wireless-Module/build/esp-idf/bt/CMakeFiles/__idf_bt.dir
 C:/Users/aaron/esp32-dev/esp32-eti/ETI-Wireless-Module/build/esp-idf/bt/CMakeFiles/edit_cache.dir
 C:/Users/aaron/esp32-dev/esp32-eti/ETI-Wireless-Module/build/esp-idf/bt/CMakeFiles/rebuild_cache.dir
 C:/Users/aaron/esp32-dev/esp32-eti/ETI-Wireless-Module/build/esp-idf/bt/CMakeFiles/list_install_components.dir

@@ -31,6 +31,7 @@ C:/Users/aaron/esp32-dev/esp32-eti/ETI-Wireless-Module/build/esp-idf/lwip/liblwi
 C:/Users/aaron/esp32-dev/esp32-eti/ETI-Wireless-Module/build/esp-idf/esp_netif/libesp_netif.a
 C:/Users/aaron/esp32-dev/esp32-eti/ETI-Wireless-Module/build/esp-idf/wpa_supplicant/libwpa_supplicant.a
 C:/Users/aaron/esp32-dev/esp32-eti/ETI-Wireless-Module/build/esp-idf/esp_wifi/libesp_wifi.a
+C:/Users/aaron/esp32-dev/esp32-eti/ETI-Wireless-Module/build/esp-idf/bt/libbt.a
 C:/Users/aaron/esp32-dev/esp32-eti/ETI-Wireless-Module/build/esp-idf/unity/libunity.a
 C:/Users/aaron/esp32-dev/esp32-eti/ETI-Wireless-Module/build/esp-idf/cmock/libcmock.a
 C:/Users/aaron/esp32-dev/esp32-eti/ETI-Wireless-Module/build/esp-idf/console/libconsole.a

@@ -140,7 +140,9 @@ static void wifi_app_default_wifi_init(void)
 	ESP_ERROR_CHECK(esp_wifi_init(&wifi_init_config));
 	ESP_ERROR_CHECK(esp_wifi_set_storage(WIFI_STORAGE_RAM));
 	esp_netif_sta = esp_netif_create_default_wifi_sta();
-	esp_netif_ap = esp_netif_create_default_wifi_ap();
+	ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));						///> Setting the mode as Station Mode
+	ESP_ERROR_CHECK(esp_wifi_set_ps(WIFI_PS_MIN_MODEM));						///> Power save set to "NONE" Remove to enable APSTA
+	//esp_netif_ap = esp_netif_create_default_wifi_ap();	
 }
 
 /**
@@ -177,7 +179,7 @@ static void wifi_app_soft_ap_config(void)
 	ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_APSTA));						///> Setting the mode as Access Point / Station Mode
 	ESP_ERROR_CHECK(esp_wifi_set_config(ESP_IF_WIFI_AP, &ap_config));			///> Set our configuration
 	ESP_ERROR_CHECK(esp_wifi_set_bandwidth(WIFI_IF_AP, WIFI_AP_BANDWIDTH));		///> Our default bandwidth 20 MHz
-	ESP_ERROR_CHECK(esp_wifi_set_ps(WIFI_STA_POWER_SAVE));						///> Power save set to "NONE"
+	ESP_ERROR_CHECK(esp_wifi_set_ps(WIFI_PS_NONE));						///> Power save set to "NONE"
 
 }
 
@@ -206,7 +208,7 @@ static void wifi_app_task(void *pvParameters)
 	wifi_app_default_wifi_init();
 
 	// SoftAP config
-	wifi_app_soft_ap_config();
+	//wifi_app_soft_ap_config();
 
 	// Start WiFi
 	ESP_ERROR_CHECK(esp_wifi_start());
