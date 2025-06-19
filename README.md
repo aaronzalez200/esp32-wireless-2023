@@ -1,56 +1,8 @@
-| Supported Targets | ESP32 | ESP32-C2 | ESP32-C3 | ESP32-S2 | ESP32-S3 |
-| ----------------- | ----- | -------- | -------- | -------- | -------- |
+Rough prototype of IoT device using an ESP32 development board. This is no longer working as various API keys have expired.
 
-# Wi-Fi SoftAP Example
+With this project, I learned how to implement HTTPS, MQTT, BLE, work with a database, and WiFi provisioning. Since this project was worked on intermittently and documented late, I don't recall the current state of the code. At some point, I implemented protobufs (reading through Espressif's documents) using BLE to have a custom wifi provision protocol to send over SSID and Password for when trying to connect to an access point. I recall this being buggy as it would sometimes not take the data due to interference, possibly. It would work at my workplace but have issues on my home network.
 
-(See the README.md file in the upper level 'examples' directory for more information about examples.)
+The method of data handling was inefficient reflecting back on what I had originally. So users would have their names and emails stored into a database (MongoDB) and this data was taken from Google's email login service which would provide public info that can be fetched after a user signs in with Google. With the user data, the database can now know what devices a user has saved onto their account. The devices will be displayed to the user on a device page on a website. For a user to register a device, they need to see the serial number which would show up on a display/or read through the printf statements during prototyping. To verify if the device exists, the device will power on and read the database and see if its serial number has been registered into the database. If it doesn't see its serial number then it makes a POST request via HTTPS and registers itself into the database. After this the user can assign the device to their account so that they have access to remotely control the device via the website or mobile app. For security, a random code is also required for a user to register a device. They will provide 3 parameters: Name of the Device, Security code, Serial Number. After this the server will check if the securitiy code and serial number are valid and assign the device to the user. With this the user can press buttons on the UI to configure the device into two different modes and remotely toggle a relay. 
 
-This example shows how to use the Wi-Fi SoftAP functionality of the Wi-Fi driver of ESP for serving as an Access Point.
+It has been over 2 years since this project was touched so I will show various videos below of it being demo: 
 
-## How to use example
-
-SoftAP supports Protected Management Frames(PMF). Necessary configurations can be set using pmf flags. Please refer [Wifi-Security](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/wifi-security.html) for more info.
-
-### Configure the project
-
-Open the project configuration menu (`idf.py menuconfig`).
-
-In the `Example Configuration` menu:
-
-* Set the Wi-Fi configuration.
-    * Set `WiFi SSID`.
-    * Set `WiFi Password`.
-
-Optional: If you need, change the other options according to your requirements.
-
-### Build and Flash
-
-Build the project and flash it to the board, then run the monitor tool to view the serial output:
-
-Run `idf.py -p PORT flash monitor` to build, flash and monitor the project.
-
-(To exit the serial monitor, type ``Ctrl-]``.)
-
-See the Getting Started Guide for all the steps to configure and use the ESP-IDF to build projects.
-
-* [ESP-IDF Getting Started Guide on ESP32](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/index.html)
-* [ESP-IDF Getting Started Guide on ESP32-S2](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/get-started/index.html)
-* [ESP-IDF Getting Started Guide on ESP32-C3](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c3/get-started/index.html)
-
-## Example Output
-
-There is the console output for this example:
-
-```
-I (917) phy: phy_version: 3960, 5211945, Jul 18 2018, 10:40:07, 0, 0
-I (917) wifi: mode : softAP (30:ae:a4:80:45:69)
-I (917) wifi softAP: wifi_init_softap finished.SSID:myssid password:mypassword
-I (26457) wifi: n:1 0, o:1 0, ap:1 1, sta:255 255, prof:1
-I (26457) wifi: station: 70:ef:00:43:96:67 join, AID=1, bg, 20
-I (26467) wifi softAP: station:70:ef:00:43:96:67 join, AID=1
-I (27657) esp_netif_lwip: DHCP server assigned IP to a station, IP is: 192.168.4.2
-```
-
-## Troubleshooting
-
-For any technical queries, please open an [issue](https://github.com/espressif/esp-idf/issues) on GitHub. We will get back to you soon.
