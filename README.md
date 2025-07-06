@@ -6,3 +6,9 @@ The method of data handling was inefficient reflecting back on what I had origin
 
 It has been over 2 years since this project was touched so I will show various videos below of it being demo: 
 
+Website Demo Link: https://youtu.be/1oexJyhdpjg
+The link above shows a quick demonstration of the website created using NextJS. The login page was created using the next-auth library to allow sign ins via Google or a custom user/password or through email. 
+
+Hardware Demo (Polling Database for updates): https://youtu.be/xAJtARbXMEY
+The link above shows a demonstration of the app (created with React Native) and the website (created with NextJS) and demonstrates the polling method used to check if the database has been updated and if so, updates the UI accordingly. The LEDs are updated to show that communication between the hardware (ESP32) and the database (MongoDB) is working.
+
